@@ -2,7 +2,9 @@ package br.com.zup.zupapp.di.app
 
 import android.app.Application
 import android.content.Context
+import android.os.Build
 import br.com.zup.mvvm.AppApplication
+import br.com.zup.mvvm.BuildConfig
 import br.com.zup.mvvm.R
 import br.com.zup.zupapp.service.APIClient
 import br.com.zup.zupapp.service.AppAPI
@@ -23,12 +25,12 @@ class AppModule {
     @Singleton
     @Provides
     fun provideEntryPointUrl(): String {
-        return AppApplication.instance.getString(R.string.app_name)
+        return BuildConfig.HOST
     }
 
     @Singleton
     @Provides
-    fun provideApiClient( url: String): APIClient {
+    fun provideApiClient(url: String): APIClient {
         return APIClient(url)
     }
 
