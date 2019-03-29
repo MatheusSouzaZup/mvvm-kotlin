@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -29,14 +33,56 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    def STRING = "String"
+    def HOST = "HOST"
+    flavorDimensions "dev"
+    productFlavors {
+        dev {
+            applicationId 'br.com.zup.architecture.dev'
+            buildConfigField STRING, HOST, keystoreProperties['host_dev']
+            manifestPlaceholders = [
+                    appName: "MVVM DEV"
+            ]
+            dimension "dev"
+        }
 
+        mock {
+            applicationId 'br.com.zup.architecutre.mock'
+            buildConfigField STRING, HOST, keystoreProperties['host_dev']
+
+            manifestPlaceholders = [
+                    appName: "MVVM MOCK"
+            ]
+            dimension "dev"
+        }
+        hml {
+            applicationId 'br.com.zup.architecture.hml'
+            buildConfigField STRING, HOST, keystoreProperties['host_dev']
+            manifestPlaceholders = [
+                    appName: "MVVM HML"
+            ]
+
+            dimension "dev"
+        }
+
+        prd {
+            applicationId 'br.com.zup.architecture'
+            buildConfigField STRING, HOST, keystoreProperties['host_dev']
+
+            manifestPlaceholders = [
+                    appName: "MVVM PROD"
+            ]
+
+            dimension "dev"
+        }
+    }
 }
 kapt {
     correctErrorTypes = true
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Test
     testImplementation 'junit:junit:4.12'
