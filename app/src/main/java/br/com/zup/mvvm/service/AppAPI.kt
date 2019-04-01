@@ -1,4 +1,4 @@
-package br.com.zup.zupapp.service
+package br.com.zup.mvvm.service
 
 import retrofit2.Call
 import retrofit2.http.GET

@@ -1,6 +1,6 @@
-package br.com.zup.zupapp.di.builders
+package br.com.zup.mvvm.di.builders
 
-import br.com.drmsolucoes.sunrisealarmclock.di.Activity
+import br.com.zup.mvvm.di.Activity
 import br.com.zup.mvvm.view.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

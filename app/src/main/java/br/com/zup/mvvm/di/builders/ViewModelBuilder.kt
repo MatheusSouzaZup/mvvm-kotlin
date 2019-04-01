@@ -1,8 +1,8 @@
-package br.com.zup.zupapp.di.builders
+package br.com.zup.mvvm.di.builders
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import br.com.drmsolucoes.sunrisealarmclock.di.ViewModelKey
+import br.com.zup.mvvm.di.ViewModelKey
 import br.com.zup.mvvm.viewmodel.MainViewModel
 import br.com.zup.mvvm.viewmodel.ViewModelProviderFactory
 import dagger.Binds

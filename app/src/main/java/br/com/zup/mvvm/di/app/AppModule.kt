@@ -1,14 +1,13 @@
-package br.com.zup.zupapp.di.app
+package br.com.zup.mvvm.di.app
 
 import android.app.Application
 import android.content.Context
-import android.os.Build
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import br.com.zup.mvvm.AppApplication
 import br.com.zup.mvvm.BuildConfig
-import br.com.zup.mvvm.R
-import br.com.zup.zupapp.service.APIClient
-import br.com.zup.zupapp.service.AppAPI
-
+import br.com.zup.mvvm.room.AppDatabase
+import br.com.zup.mvvm.service.APIClient
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -34,10 +33,21 @@ class AppModule {
         return APIClient(url)
     }
 
-    @Singleton
     @Provides
-    fun provideSunriseSunsetAPI(apiClient: APIClient): AppAPI {
-        return apiClient.retrofit.create(AppAPI::class.java)
+    @Singleton
+    fun providesSharedPreferences(application: Application): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(application)
     }
 
+    @Provides
+    @Singleton
+    fun providesSodexoApplication(application: Application): AppApplication {
+        return application as AppApplication
+    }
+
+    @Provides
+    @Singleton
+    internal fun providesRoomDb(app: Application): AppDatabase {
+        return (app as AppApplication).getAppDb()
+    }
 }

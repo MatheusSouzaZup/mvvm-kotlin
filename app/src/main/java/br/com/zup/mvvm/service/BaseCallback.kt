@@ -1,4 +1,4 @@
-package br.com.zup.zupapp.service
+package br.com.zup.mvvm.service
 
 import br.com.zup.mvvm.model.BaseData
 import com.google.gson.Gson

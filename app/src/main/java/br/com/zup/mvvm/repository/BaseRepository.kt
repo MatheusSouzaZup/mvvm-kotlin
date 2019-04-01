@@ -1,7 +1,5 @@
-package br.com.zup.zupapp.data.repository
+package br.com.zup.mvvm.repository
 
-/**
- * Created by rafaelneiva on 13/11/18.
- */
+
 abstract class BaseRepository {
 }

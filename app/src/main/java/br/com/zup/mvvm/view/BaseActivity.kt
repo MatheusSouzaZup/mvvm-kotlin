@@ -1,4 +1,4 @@
-package br.com.zup.zupapp.view
+package br.com.zup.mvvm.view
 
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders

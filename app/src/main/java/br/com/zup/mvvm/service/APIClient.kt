@@ -1,4 +1,4 @@
-package br.com.zup.zupapp.service
+package br.com.zup.mvvm.service
 
 import br.com.zup.mvvm.AppApplication
 import br.com.zup.zupapp.util.Utils
@@ -23,8 +23,8 @@ class APIClient(baseUrl: String) {
     private val client: OkHttpClient
         get() = OkHttpClient()
             .newBuilder()
-            //                .addInterceptor(requestIntercept)
-//            .addInterceptor(checkConnectionInterceptor)
+            .addInterceptor(requestIntercept)
+            .addInterceptor(checkConnectionInterceptor)
             .addInterceptor(loggingCapableHttpClient)
             .connectTimeout(90, TimeUnit.SECONDS)
             .readTimeout(90, TimeUnit.SECONDS)

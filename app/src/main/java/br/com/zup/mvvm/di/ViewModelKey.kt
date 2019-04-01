@@ -1,4 +1,4 @@
-package br.com.drmsolucoes.sunrisealarmclock.di
+package br.com.zup.mvvm.di
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey
