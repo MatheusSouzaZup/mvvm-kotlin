@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import br.com.zup.mvvm.di.ViewModelKey
 import br.com.zup.mvvm.viewmodel.MainViewModel
+import br.com.zup.mvvm.viewmodel.SavedViewModel
 import br.com.zup.mvvm.viewmodel.ViewModelProviderFactory
 import dagger.Binds
 import dagger.Module
@@ -21,6 +22,13 @@ abstract class ViewModelBuilder {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    // Saved
+    @Binds
+    @IntoMap
+    @ViewModelKey(SavedViewModel::class)
+    abstract fun bindSavedViewModel(savedViewModel: SavedViewModel): ViewModel
+
 
 
     // ViewModel Factory

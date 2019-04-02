@@ -4,7 +4,7 @@ import android.arch.lifecycle.LiveData
 
 
 data class BaseData<T>(
-    var result: T? = null,
+    var data: T? = null,
     val message: String? = null,
     val status: String? = null,
     var isInitialLoading: LiveData<Boolean>? = null,

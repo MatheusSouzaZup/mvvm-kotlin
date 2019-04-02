@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 @Entity
 data class Example(
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var id: Int? = null,
     var exampleTitle: String
 )
 
