@@ -1,7 +1,7 @@
 package br.com.zup.mvvm.di.builders
 
 import br.com.zup.mvvm.di.Activity
-import br.com.zup.mvvm.view.MainActivity
+import br.com.zup.mvvm.view.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

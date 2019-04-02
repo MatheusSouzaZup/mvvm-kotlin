@@ -9,7 +9,7 @@ import javax.inject.Singleton
 class ServiceModule {
     @Provides
     @Singleton
-    internal fun providesGoogleLocationService(client: APIClient): APIClient {
+    internal fun providesService(client: APIClient): APIClient {
         return client.retrofit.create(APIClient::class.java)
     }
 }

@@ -8,6 +8,7 @@ import br.com.zup.mvvm.AppApplication
 import br.com.zup.mvvm.BuildConfig
 import br.com.zup.mvvm.room.AppDatabase
 import br.com.zup.mvvm.service.APIClient
+import br.com.zup.mvvm.service.AppAPI
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -27,10 +28,17 @@ class AppModule {
         return BuildConfig.HOST
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideApiClient(url: String): APIClient {
         return APIClient(url)
+    }
+
+
+    @Provides
+    @Singleton
+    fun privedeApi(apiClient: APIClient): AppAPI {
+        return apiClient.retrofit.create(AppAPI::class.java)
     }
 
     @Provides
@@ -41,7 +49,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesSodexoApplication(application: Application): AppApplication {
+    fun providesAppApplication(application: Application): AppApplication {
         return application as AppApplication
     }
 
@@ -50,4 +58,5 @@ class AppModule {
     internal fun providesRoomDb(app: Application): AppDatabase {
         return (app as AppApplication).getAppDb()
     }
+
 }
