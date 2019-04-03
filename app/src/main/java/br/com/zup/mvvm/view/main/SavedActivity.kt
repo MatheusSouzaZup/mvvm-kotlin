@@ -2,6 +2,7 @@ package br.com.zup.mvvm.view.main
 
 import android.arch.lifecycle.Observer
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import br.com.zup.mvvm.R
 import br.com.zup.mvvm.databinding.ActivitySavedBinding
 import br.com.zup.mvvm.room.example.Example
@@ -29,6 +30,13 @@ class SavedActivity : BaseActivity<ActivitySavedBinding, SavedViewModel>(), Main
     private fun setupToolbar() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home ->
+                onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun populateContainer(list: MutableList<Example>) {
